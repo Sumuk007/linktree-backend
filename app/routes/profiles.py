@@ -7,6 +7,12 @@ from ..schemas import ProfileCreate, ProfileUpdate, ProfileResponse
 
 router = APIRouter(prefix="/api/profiles", tags=["profiles"])
 
+@router.get("", response_model=List[ProfileResponse])
+def get_all_profiles(db: Session = Depends(get_db)):
+    """Get all profiles"""
+    users = db.query(User).all()
+    return users
+
 @router.post("", response_model=ProfileResponse, status_code=status.HTTP_201_CREATED)
 def create_profile(profile: ProfileCreate, db: Session = Depends(get_db)):
     """Create a new profile with links"""
