@@ -9,9 +9,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "http://localhost:5174",
         "http://localhost:3000",
-        "https://*.vercel.app",  # Allow all Vercel preview deployments
-        "https://your-frontend-domain.vercel.app"  # Replace with your actual domain
+        "https://*.vercel.app",
+        "https://linktree-backend-production-2969.up.railway.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
